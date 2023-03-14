@@ -1,25 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
-import {Amplify} from 'aws-amplify';
-import awsConfig from './aws-exports';
-import {Authenticator } from '@aws-amplify/ui-react';
+//App.js
+import { Authenticator } from '@aws-amplify/ui-react';
 
-Amplify.configure(awsConfig);
+import { Protected } from './components/Protected';
+import { RequireAuth } from './RequireAuth';
+import { Login } from './components/Login';
+import { ProtectedSecond } from './components/ProtectSecond';
+import { Home } from './components/Home';
+import { Layout } from './components/Layout';
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import './App.css';
+
+function MyRoutes() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route
+            path="/protected"
+            element={
+              <RequireAuth>
+                <Protected />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/protected2"
+            element={
+              <RequireAuth>
+                <ProtectedSecond />
+              </RequireAuth>
+            }
+          />
+          <Route path="/login" element={<Login />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
 
 function App() {
   return (
-    <Authenticator> {({signOut, user}) => (
-      <main>
-        <h1> hello {user.username} </h1>
-        <button onClick={signOut} > Sign Out </button>
-      </main>
-    )}
-    <div className="App">
-                
-        <h1>lets build this app please </h1>
-        <h2>here is one of the updates</h2>
-    </div>
-    </Authenticator>
+    <Authenticator.Provider>
+      <MyRoutes />
+    </Authenticator.Provider>
   );
 }
 
