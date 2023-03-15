@@ -7,6 +7,7 @@ export function Layout() {
   const { route, signOut } = useAuthenticator((context) => [
     context.route,
     context.signOut,
+    
   ]);
   const navigate = useNavigate();
 
