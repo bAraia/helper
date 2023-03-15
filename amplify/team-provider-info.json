@@ -31,7 +31,8 @@
     },
     "categories": {
       "auth": {
-        "helper62386ead": {}
+        "helper62386ead": {},
+        "userPoolGroups": {}
       }
     }
   }

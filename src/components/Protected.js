@@ -5,5 +5,5 @@ export function Protected() {
 
   const message =
     route === 'authenticated' ? 'FIRST PROTECTED ROUTE!' : 'Loading...';
-  return <Heading level={1}>{message}</Heading>;
+  return <Heading level={4}>{message}</Heading>;
 }

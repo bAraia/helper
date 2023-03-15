@@ -16,6 +16,7 @@ export function Layout() {
   }
   return (
     <>
+      
       <nav>
         <Button onClick={() => navigate('/')}>Home</Button>
         <Button onClick={() => navigate('/protected')}>
@@ -30,7 +31,7 @@ export function Layout() {
           <Button onClick={() => logOut()}>Logout</Button>
         )}
       </nav>
-      <Heading level={1}>Example Auth Routes App</Heading>
+      <Heading level={4}>Example Auth Routes App</Heading>
       <View>
         {route === 'authenticated' ? 'You are logged in!' : 'Please Login!'}
       </View>

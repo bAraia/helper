@@ -5,5 +5,5 @@ export function ProtectedSecond() {
 
   const message =
     route === 'authenticated' ? 'SECOND PROTECTED ROUTE!' : 'Loading...';
-  return <Heading level={1}>{message}</Heading>;
+  return <Heading level={3}>{message}</Heading>;
 }
